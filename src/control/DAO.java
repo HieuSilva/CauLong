@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import model.NoiDung;
 import model.TranDau;
+import model.VanDongVien;
 
 /**
  *
@@ -29,6 +30,21 @@ public class DAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public boolean themVDV (VanDongVien v){
+        String sql = "INSERT INTO tbl_van_dong_vien(gioi_tinh, ho_ten, ngay_sinh, diem, mo_ta, anh, id_quoc_gia)"+"VALUES(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps= conn.prepareStatement(sql);
+            ps.setString(0, v.getGioiTinh());
+            ps.setString(1, v.getHoten());
+            ps.setDate(2, v.getNgaySinh());
+            ps.setInt(0, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+                
+        return false;
     }
     
     public boolean themTranDau(TranDau td) {
