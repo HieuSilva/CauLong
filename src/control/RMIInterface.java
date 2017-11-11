@@ -8,7 +8,9 @@ package control;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import model.NoiDung;
+import model.QuocGia;
 import model.User;
+import model.VanDongVien;
 
 /**
  *
@@ -18,5 +20,6 @@ public interface RMIInterface extends Remote{
     
     public boolean checkLogin(User user) throws RemoteException;
     public NoiDung [] getNoiDungList() throws RemoteException;
-    
+    public QuocGia[] getListQuocGia() throws RemoteException;
+    public boolean themVDV(VanDongVien v) throws RemoteException;
 }

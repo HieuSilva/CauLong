@@ -13,7 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.rpc.ParameterMode;
 import model.NoiDung;
+import model.QuocGia;
 import model.User;
+import model.VanDongVien;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.encoding.XMLType;
@@ -69,6 +71,18 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     @Override
     public NoiDung[] getNoiDungList() throws RemoteException {
         return dao.getNoiDungList();
+    }
+
+    @Override
+    public QuocGia[] getListQuocGia() throws RemoteException {
+        return dao.getListQuocGia();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean themVDV(VanDongVien v) throws RemoteException {
+        return dao.themVDV(v);
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
