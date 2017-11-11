@@ -7,6 +7,7 @@ package control;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import model.NoiDung;
 import model.User;
 
 /**
@@ -16,5 +17,6 @@ import model.User;
 public interface RMIInterface extends Remote{
     
     public boolean checkLogin(User user) throws RemoteException;
+    public NoiDung [] getNoiDungList() throws RemoteException;
     
 }

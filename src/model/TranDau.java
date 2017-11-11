@@ -26,6 +26,10 @@ public class TranDau implements Serializable{
     private ArrayList<DangKyThiDauCaNhan> listDangKyCN;
     private ArrayList<DangKyThiDauDoi> listDangKyDoi;
     private int set11, set12, set21, set22, set31, set32;
+    
+    public TranDau() {
+        
+    }
 
     public TranDau(int id, San san, Date thoiGian, NoiDung noiDung,
                     boolean isTeam, int vong, int cap, int diemThuong,

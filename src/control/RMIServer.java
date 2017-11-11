@@ -12,6 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.rpc.ParameterMode;
+import model.NoiDung;
 import model.User;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
@@ -63,6 +64,11 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
         } catch (RemoteException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public NoiDung[] getNoiDungList() throws RemoteException {
+        return dao.getNoiDungList();
     }
     
 }
