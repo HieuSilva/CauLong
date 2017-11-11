@@ -9,6 +9,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.rpc.ParameterMode;
 import model.User;
 import org.apache.axis.client.Call;
@@ -53,6 +55,14 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
             ex.printStackTrace();
         }
         return result;
+    }
+    
+    public static void main(String[] args) {
+        try {
+            RMIServer server = new RMIServer();
+        } catch (RemoteException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }
