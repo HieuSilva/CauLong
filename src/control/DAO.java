@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import model.NoiDung;
 import model.QuocGia;
+import model.San;
 import model.TranDau;
 import model.VanDongVien;
 
@@ -114,6 +115,69 @@ public class DAO {
             e.printStackTrace();
         }
         return listND;
+    }
+    
+    public San [] getSanList() {
+        San [] listSan = null;
+        String sql = "SELECT * FROM tbl_san";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                listSan = new San[rs.getRow()];
+                rs.beforeFirst();
+                
+                int i=0;
+                while(rs.next()) {
+                    listSan[i++] = new San(rs.getInt("id"), rs.getString("ten"), rs.getString("mo_ta"));
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listSan;
+    }
+    
+    public San getSanById(int id) {
+        String sql = "SELECT * FROM tbl_san "
+                + "WHERE id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                rs.beforeFirst();
+                while(rs.next()) {
+                    San s = new San(rs.getInt("id"), rs.getString("ten"), rs.getString("mo_ta"));
+                    return s;
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public NoiDung getNoiDungById(int id) {
+        String sql = "SELECT * FROM tbl_noi_dung WHERE id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                rs.beforeFirst();
+                while(rs.next()) {
+                    NoiDung n = new NoiDung(rs.getInt("id"), rs.getString("ten"), rs.getString("mo_ta"));
+                    return n;
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
 }

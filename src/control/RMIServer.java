@@ -9,11 +9,10 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.rpc.ParameterMode;
 import model.NoiDung;
 import model.QuocGia;
+import model.San;
 import model.User;
 import model.VanDongVien;
 import org.apache.axis.client.Call;
@@ -85,4 +84,8 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public San[] getSanList() throws RemoteException {
+        return dao.getSanList();
+    }
 }
