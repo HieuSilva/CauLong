@@ -9,13 +9,13 @@ package model;
  *
  * @author HIEU
  */
-public class San {
+public class NoiDung {
     
     private int id;
     private String ten;
     private String mota;
 
-    public San(int id, String ten, String mota) {
+    public NoiDung(int id, String ten, String mota) {
         this.id = id;
         this.ten = ten;
         this.mota = mota;
@@ -44,7 +44,6 @@ public class San {
     public void setMota(String mota) {
         this.mota = mota;
     }
-    
     
     
     
