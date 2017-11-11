@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author HIEU
  */
-public class QuocGia {
+public class QuocGia implements Serializable{
     
     private int id;
     private String ten;

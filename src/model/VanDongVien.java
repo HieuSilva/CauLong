@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author HIEU
  */
-public class VanDongVien {
+public class VanDongVien implements Serializable{
     
     private int id;
     private String hoten;

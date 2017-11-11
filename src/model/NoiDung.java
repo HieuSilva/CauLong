@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author HIEU
  */
-public class NoiDung {
+public class NoiDung implements Serializable{
     
     private int id;
     private String ten;
