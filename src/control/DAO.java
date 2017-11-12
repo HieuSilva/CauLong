@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
 import model.San;
@@ -79,6 +80,19 @@ public class DAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, s.getTen());
             ps.setString(2, s.getMota());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean themDoi(Doi d){
+        String sql = "INSERT INTO tbl_doi(ten, mo_ta)"+" VALUES(?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, d.getTenDoi());
+            ps.setString(2, d.getMota());
             ps.executeUpdate();
             return true;
         } catch (Exception e) {

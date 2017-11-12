@@ -10,6 +10,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import javax.xml.rpc.ParameterMode;
+import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
 import model.San;
@@ -93,5 +94,11 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     public boolean themSan(San s) throws RemoteException {
         return dao.themSan(s);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean themDoi(Doi d) throws RemoteException {
+        return dao.themDoi(d);
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

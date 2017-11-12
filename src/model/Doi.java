@@ -17,5 +17,45 @@ public class Doi implements Serializable{
     private String tenDoi;
     private String mota;
     private ArrayList<VanDongVien> listVDV;
+
+    public Doi() {
+    }
+
+    public Doi(String tenDoi, String mota) {
+        this.tenDoi = tenDoi;
+        this.mota = mota;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTenDoi() {
+        return tenDoi;
+    }
+
+    public void setTenDoi(String tenDoi) {
+        this.tenDoi = tenDoi;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
+    }
+
+    public ArrayList<VanDongVien> getListVDV() {
+        return listVDV;
+    }
+
+    public void setListVDV(ArrayList<VanDongVien> listVDV) {
+        this.listVDV = listVDV;
+    }
     
 }

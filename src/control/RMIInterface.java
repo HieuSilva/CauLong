@@ -7,6 +7,7 @@ package control;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
 import model.San;
@@ -24,6 +25,7 @@ public interface RMIInterface extends Remote{
     public QuocGia[] getListQuocGia() throws RemoteException;
     public boolean themVDV(VanDongVien v) throws RemoteException;
     public boolean themSan(San s) throws RemoteException;
+    public boolean themDoi(Doi d) throws RemoteException;
     
     public San [] getSanList() throws RemoteException;
 }
