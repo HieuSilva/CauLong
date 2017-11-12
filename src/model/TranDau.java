@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +17,7 @@ public class TranDau implements Serializable{
     
     private int id;
     private San san;
-    private Date thoiGian;
+    private Timestamp thoiGian;
     private NoiDung noiDung;
     private boolean isTeam;
     private int vong;
@@ -31,7 +31,7 @@ public class TranDau implements Serializable{
         
     }
 
-    public TranDau(int id, San san, Date thoiGian, NoiDung noiDung,
+    public TranDau(int id, San san, Timestamp thoiGian, NoiDung noiDung,
                     boolean isTeam, int vong, int cap, int diemThuong,
                     ArrayList<DangKyThiDauCaNhan> listDangKyCN,
                     ArrayList<DangKyThiDauDoi> listDangKyDoi,
@@ -54,7 +54,7 @@ public class TranDau implements Serializable{
         this.set32 = set32;
     }
 
-    public TranDau(San san, Date thoiGian, NoiDung noiDung, boolean isTeam, int vong, int cap, int diemThuong, ArrayList<DangKyThiDauCaNhan> listDangKyCN, ArrayList<DangKyThiDauDoi> listDangKyDoi, int set11, int set12, int set21, int set22, int set31, int set32) {
+    public TranDau(San san, Timestamp thoiGian, NoiDung noiDung, boolean isTeam, int vong, int cap, int diemThuong, ArrayList<DangKyThiDauCaNhan> listDangKyCN, ArrayList<DangKyThiDauDoi> listDangKyDoi, int set11, int set12, int set21, int set22, int set31, int set32) {
         this.san = san;
         this.thoiGian = thoiGian;
         this.noiDung = noiDung;
@@ -88,11 +88,11 @@ public class TranDau implements Serializable{
         this.san = san;
     }
 
-    public Date getThoiGian() {
+    public Timestamp getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(Date thoiGian) {
+    public void setThoiGian(Timestamp thoiGian) {
         this.thoiGian = thoiGian;
     }
 

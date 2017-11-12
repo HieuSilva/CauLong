@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
@@ -101,13 +102,78 @@ public class DAO {
         return false;
     }
     
+    
+    public TranDau [] getTranDauList() {
+        TranDau [] listTD = null;
+        String sql = "SELECT * FROM tbl_tran_dau";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                listTD = new TranDau[rs.getRow()];
+                rs.beforeFirst();
+                
+                int i=0;
+                while(rs.next()) {
+                    int id = rs.getInt("id");
+                    int id_san = rs.getInt("id_san");
+                    int id_noi_dung = rs.getInt("id_noi_dung");
+                    int vong = rs.getInt("vong");
+                    int cap = rs.getInt("cap");
+                    int diem = rs.getInt("diem_thuong");
+                    Timestamp tg = rs.getTimestamp("thoi_gian");
+                    
+                    NoiDung nd = getNoiDungById(id_noi_dung);
+                    San s = getSanById(id_san);
+                    
+                    TranDau td = new TranDau();
+                    td.setId(id);
+                    td.setSan(s);
+                    td.setNoiDung(nd);
+                    td.setThoiGian(tg);
+                    td.setVong(vong);
+                    td.setCap(cap);
+                    td.setDiemThuong(diem);
+                    
+                    listTD[i++] = td;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listTD;
+    }
+
+public boolean checkTranDau(TranDau td) {
+        String sql = "SELECT * FROM tbl_tran_dau "
+                + "WHERE ((id_noi_dung = ? AND vong = ? AND cap = ?) "
+                + "OR (id_san = ? AND thoi_gian = ?))";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, td.getNoiDung().getId());
+            ps.setInt(2, td.getVong());
+            ps.setInt(3, td.getCap());
+            ps.setInt(4, td.getSan().getId());
+            ps.setTimestamp(5, td.getThoiGian());
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next())
+                return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     public boolean themTranDau(TranDau td) {
         String sql = "INSERT INTO tbl_tran_dau(id_san, thoi_gian, id_noi_dung, diem_thuong, vong, cap, is_team) "
                 + "VALUES(?,?,?,?,?,?,?)";
         try {
+            if(checkTranDau(td))
+                return false;
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, td.getSan().getId());
-            ps.setDate(2, td.getThoiGian());
+            ps.setTimestamp(2, td.getThoiGian());
             ps.setInt(3, td.getNoiDung().getId());
             ps.setInt(4, td.getDiemThuong());
             ps.setInt(5, td.getVong());
@@ -121,6 +187,7 @@ public class DAO {
         }
         return false;
     }
+
     
     public NoiDung[] getNoiDungList() {
         NoiDung [] listND = null;

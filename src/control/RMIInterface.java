@@ -11,6 +11,7 @@ import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
 import model.San;
+import model.TranDau;
 import model.User;
 import model.VanDongVien;
 
@@ -28,4 +29,8 @@ public interface RMIInterface extends Remote{
     public boolean themDoi(Doi d) throws RemoteException;
     
     public San [] getSanList() throws RemoteException;
+    
+    public TranDau [] getTranDauList() throws RemoteException;
+    
+    public boolean themTranDau(TranDau td) throws RemoteException;
 }

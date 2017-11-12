@@ -14,6 +14,7 @@ import model.Doi;
 import model.NoiDung;
 import model.QuocGia;
 import model.San;
+import model.TranDau;
 import model.User;
 import model.VanDongVien;
 import org.apache.axis.client.Call;
@@ -100,5 +101,15 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     public boolean themDoi(Doi d) throws RemoteException {
         return dao.themDoi(d);
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public TranDau[] getTranDauList() throws RemoteException {
+        return dao.getTranDauList();
+    }
+
+    @Override
+    public boolean themTranDau(TranDau td) throws RemoteException {
+        return dao.themTranDau(td);
     }
 }
