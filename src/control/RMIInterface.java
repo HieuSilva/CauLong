@@ -23,7 +23,7 @@ public interface RMIInterface extends Remote{
     public NoiDung [] getNoiDungList() throws RemoteException;
     public QuocGia[] getListQuocGia() throws RemoteException;
     public boolean themVDV(VanDongVien v) throws RemoteException;
-    
+    public boolean themSan(San s) throws RemoteException;
     
     public San [] getSanList() throws RemoteException;
 }

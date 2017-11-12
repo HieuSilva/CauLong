@@ -88,4 +88,10 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     public San[] getSanList() throws RemoteException {
         return dao.getSanList();
     }
+
+    @Override
+    public boolean themSan(San s) throws RemoteException {
+        return dao.themSan(s);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

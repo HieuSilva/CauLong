@@ -5,13 +5,17 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author HIEU
  */
-public class Doi {
+public class Doi implements Serializable{
     private int id;
+    private String tenDoi;
+    private String mota;
     private ArrayList<VanDongVien> listVDV;
+    
 }

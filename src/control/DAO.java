@@ -73,6 +73,19 @@ public class DAO {
                 
         return false;
     }
+    public boolean themSan(San s){
+        String sql = "INSERT INTO tbl_san(ten, mo_ta)"+" VALUES(?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, s.getTen());
+            ps.setString(2, s.getMota());
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     
     public boolean themTranDau(TranDau td) {
         String sql = "INSERT INTO tbl_tran_dau(id_san, thoi_gian, id_noi_dung, diem_thuong, vong, cap, is_team) "

@@ -17,6 +17,15 @@ public class San implements Serializable {
     private String ten;
     private String mota;
 
+    public San(String ten, String mota) {
+        this.ten = ten;
+        this.mota = mota;
+    }
+
+    public San() {
+    }
+    
+
     public San(int id, String ten, String mota) {
         this.id = id;
         this.ten = ten;
