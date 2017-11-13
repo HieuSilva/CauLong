@@ -17,6 +17,11 @@ public class DangKyThiDauCaNhan implements Serializable {
     private boolean isFirst;
     private String ghiChu;
 
+    public DangKyThiDauCaNhan() {
+    }
+
+    
+    
     public DangKyThiDauCaNhan(VanDongVien vdv, boolean isFirst, String ghiChu) {
         this.vdv = vdv;
         this.isFirst = isFirst;

@@ -112,4 +112,29 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     public boolean themTranDau(TranDau td) throws RemoteException {
         return dao.themTranDau(td);
     }
+
+    @Override
+    public VanDongVien[] searchVDVbyQuocGia(int idquocgia, int gioitinh) throws RemoteException {
+        return dao.searchVDVbyQuocGia(idquocgia, gioitinh);
+    }
+
+    @Override
+    public boolean dangKyThiDauCaNhan(TranDau td) throws RemoteException {
+        return dao.dangKyThiDauCaNhan(td);
+    }
+
+    @Override
+    public boolean checkDangKyVanDongVien(TranDau td) throws RemoteException {
+        return dao.checkDangKyVanDongVien(td);
+    }
+
+    @Override
+    public Doi[] getDoiByNoiDung(NoiDung nd) throws RemoteException {
+        return dao.getDoiByNoiDung(nd);
+    }
+
+    @Override
+    public boolean dangKyThiDauDoi(TranDau td) throws RemoteException {
+        return dao.dangKyThiDauDoi(td);
+    }
 }

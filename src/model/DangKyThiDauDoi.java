@@ -17,6 +17,9 @@ public class DangKyThiDauDoi implements Serializable{
     private boolean isFirst;
     private String ghiChu;
 
+    public DangKyThiDauDoi() {
+    }
+
     public DangKyThiDauDoi(Doi doi, boolean isFirst, String ghiChu) {
         this.doi = doi;
         this.isFirst = isFirst;

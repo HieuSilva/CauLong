@@ -33,4 +33,14 @@ public interface RMIInterface extends Remote{
     public TranDau [] getTranDauList() throws RemoteException;
     
     public boolean themTranDau(TranDau td) throws RemoteException;
+    
+    public VanDongVien[] searchVDVbyQuocGia(int idquocgia, int gioitinh) throws RemoteException;
+    
+    public boolean dangKyThiDauCaNhan(TranDau td) throws RemoteException;
+    
+    public boolean dangKyThiDauDoi(TranDau td) throws RemoteException;
+    
+    public boolean checkDangKyVanDongVien(TranDau td) throws RemoteException;
+    
+    public Doi [] getDoiByNoiDung(NoiDung nd) throws RemoteException;
 }

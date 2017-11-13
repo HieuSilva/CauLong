@@ -17,9 +17,12 @@ public class Doi implements Serializable{
     private String tenDoi;
     private String mota;
     private ArrayList<VanDongVien> listVDV;
+    private NoiDung noidung;
 
     public Doi() {
     }
+    
+    
 
     public Doi(String tenDoi, String mota) {
         this.tenDoi = tenDoi;
@@ -57,5 +60,15 @@ public class Doi implements Serializable{
     public void setListVDV(ArrayList<VanDongVien> listVDV) {
         this.listVDV = listVDV;
     }
+
+    public NoiDung getNoidung() {
+        return noidung;
+    }
+
+    public void setNoidung(NoiDung noidung) {
+        this.noidung = noidung;
+    }
+    
+    
     
 }
