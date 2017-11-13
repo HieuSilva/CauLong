@@ -43,4 +43,6 @@ public interface RMIInterface extends Remote{
     public boolean checkDangKyVanDongVien(TranDau td) throws RemoteException;
     
     public Doi [] getDoiByNoiDung(NoiDung nd) throws RemoteException;
+    public boolean addVanDongVienDoi(VanDongVien v, int maxid) throws RemoteException;
+    public int maxIdDoi() throws RemoteException;
 }

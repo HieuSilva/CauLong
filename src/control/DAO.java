@@ -582,4 +582,39 @@ public boolean checkTranDau(TranDau td) {
         }
         return null;
     }
+       public boolean addVanDongVienDoi(VanDongVien v, int maxid){
+        String sql = "INSERT INTO tbl_van_dong_vien_doi(id_van_dong_vien, id_doi)" +" VALUES(?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            
+            ps.setInt(1, v.getId());
+            ps.setInt(2, maxid);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public int maxIdDoi(){
+        int maxid = 0;
+        String sql = "SELECT MAX(id) as max_id FROM tbl_doi";
+        try {
+            PreparedStatement ps= conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = ps.executeQuery();
+            if(rs.last()) {
+                rs.beforeFirst();
+                while(rs.next()){
+                    System.out.println(rs.getInt("max_id"));
+                    return rs.getInt("max_id");
+                    
+                }
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

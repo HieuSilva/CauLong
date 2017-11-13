@@ -137,4 +137,16 @@ public class RMIServer extends UnicastRemoteObject implements RMIInterface{
     public boolean dangKyThiDauDoi(TranDau td) throws RemoteException {
         return dao.dangKyThiDauDoi(td);
     }
+
+    @Override
+    public boolean addVanDongVienDoi(VanDongVien v, int maxid) throws RemoteException {
+        return dao.addVanDongVienDoi(v, maxid);
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int maxIdDoi() throws RemoteException {
+        return dao.maxIdDoi();
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

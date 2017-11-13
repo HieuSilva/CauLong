@@ -50,6 +50,9 @@ public class VanDongVien implements Serializable{
 
     
     
+
+    
+    
     public int getId() {
         return id;
     }
