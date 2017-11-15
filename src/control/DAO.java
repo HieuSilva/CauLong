@@ -180,7 +180,7 @@ public boolean checkTranDau(TranDau td) {
     
     public boolean themTranDau(TranDau td) {
         String sql = "INSERT INTO tbl_tran_dau(id_san, thoi_gian, id_noi_dung, diem_thuong, vong, cap, is_team) "
-                + "VALUES(?,?,?,?,?,?,?)";
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             if(checkTranDau(td))
                 return false;
@@ -192,7 +192,6 @@ public boolean checkTranDau(TranDau td) {
             ps.setInt(5, td.getVong());
             ps.setInt(6, td.getCap());
             ps.setBoolean(7, td.isIsTeam());
-            
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
@@ -380,10 +379,11 @@ public boolean checkTranDau(TranDau td) {
     
     public ArrayList<DangKyThiDauCaNhan> getDangKyCaNhanByTranDau(int idTranDau) {
         ArrayList<DangKyThiDauCaNhan> list = null;
-        String sql = "SELECT DISTINCT id_van_dong_vien, id_tran_thi_dau, is_first, ghi_chu "
+        String sql = "SELECT DISTINCT id_van_dong_vien, id_tran_thi_dau, is_first, ghi_chu, dk.id "
                 + "FROM tbl_dang_ky_thi_dau_ca_nhan as dk, tbl_tran_dau as td "
                 + "WHERE td.id = ? "
-                + "AND td.id = dk.id_tran_thi_dau";
+                + "AND td.id = dk.id_tran_thi_dau "
+                + "ORDER BY dk.id ASC";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ps.setInt(1, idTranDau);
@@ -491,10 +491,11 @@ public boolean checkTranDau(TranDau td) {
     public ArrayList<DangKyThiDauDoi> getDangKyDoiByTranDau(TranDau td) {
         Doi [] listDoi = getDoiByTranDau(td);
         ArrayList<DangKyThiDauDoi> list = null;
-        String sql = "SELECT DISTINCT id_doi, id_tran_thi_dau, is_first, ghi_chu "
+        String sql = "SELECT DISTINCT id_doi, id_tran_thi_dau, is_first, ghi_chu, dk.id "
                 + "FROM tbl_dang_ky_thi_dau_dong_doi as dk, tbl_tran_dau as td "
                 + "WHERE td.id = ? "
-                + "AND td.id = dk.id_tran_thi_dau";
+                + "AND td.id = dk.id_tran_thi_dau "
+                + "ORDER BY dk.id ASC";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ps.setInt(1, td.getId());
